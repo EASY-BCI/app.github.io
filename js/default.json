@@ -1,0 +1,596 @@
+{
+    "ads1299_1": {
+        "config1": {
+            "daisy_en": 0,
+            "clk_en": 1,
+            "data_rate": 6
+        },
+        "config2": {
+            "pdb_refbuf": 1,
+            "vref_4v": 0,
+            "bias_meas": 0,
+            "biasref_int": 1,
+            "biasbuff_en": 1,
+            "lds_off_comp": 1,
+            "test_signal": 0
+        },
+        "config3": {
+            "pdb_lead_off": 1,
+            "pdb_bias": 1,
+            "bias_loff_sens": 0,
+            "bias_stat": 0,
+            "pdb_refbuf": 1
+        },
+        "loff": {
+            "loffp": 15,
+            "loffn": 15,
+            "flicker_loff": 1,
+            "comp_thresh": 0,
+            "ilead_off": 2,
+            "flead_off": 1
+        },
+        "channels": [
+            {
+                "ads_channel": 1,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 5,
+                "readable_name": "CH5",
+                "HPF": 0.5,
+                "LPF": 100,
+            },
+            {
+                "ads_channel": 2,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 15,
+                "readable_name": "CH15",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 3,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 6,
+                "readable_name": "CH6",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_input": 4,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 16,
+                "readable_name": "CH16",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 5,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 7,
+                "readable_name": "CH7",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 6,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 17,
+                "readable_name": "CH17",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 7,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 8,
+                "readable_name": "CH8",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 8,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 18,
+                "readable_name": "CH18",
+                "HPF": 0.5,
+                "LPF": 100
+            }
+        ],
+        "loff_sensp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "loff_sensn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "gpio": {
+            "gpio_c1": 0,
+            "gpio_c2": 0,
+            "gpio_c3": 0,
+            "gpio_c4": 0
+        },
+        "misc1": {
+            "srb1": 0
+        },
+        "misc2": {
+            "crs_bypass": 0
+        },
+        "bias_sensp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_sensn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_inp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_inn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "test_source": {
+            "test_freq": 1,
+            "test_amp": 1
+        }
+    },
+
+    "ads1299_2": {
+        "config1": {
+            "daisy_en": 0,
+            "clk_en": 1,
+            "data_rate": 6
+        },
+        "config2": {
+            "pdb_refbuf": 1,
+            "vref_4v": 0,
+            "bias_meas": 0,
+            "biasref_int": 1,
+            "biasbuff_en": 1,
+            "lds_off_comp": 1,
+            "test_signal": 0
+        },
+        "config3": {
+            "pdb_lead_off": 1,
+            "pdb_bias": 1,
+            "bias_loff_sens": 0,
+            "bias_stat": 0,
+            "pdb_refbuf": 1
+        },
+        "loff": {
+            "loffp": 15,
+            "loffn": 15,
+            "flicker_loff": 1,
+            "comp_thresh": 0,
+            "ilead_off": 2,
+            "flead_off": 1
+        },
+        "channels": [
+            {
+                "ads_channel": 1,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 9,
+                "readable_name": "CH9",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 2,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 19,
+                "readable_name": "CH19",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 3,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 10,
+                "readable_name": "CH10",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 4,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 20,
+                "readable_name": "CH20",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 5,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 23,
+                "readable_name": "CH23",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 6,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 21,
+                "readable_name": "CH21",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 7,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 22,
+                "readable_name": "CH22",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 8,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 24,
+                "readable_name": "CH24",
+                "HPF": 0.5,
+                "LPF": 100
+            }
+        ],
+        "loff_sensp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "loff_sensn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "gpio": {
+            "gpio_c1": 0,
+            "gpio_c2": 0,
+            "gpio_c3": 0,
+            "gpio_c4": 0
+        },
+        "misc1": {
+            "srb1": 0
+        },
+        "misc2": {
+            "crs_bypass": 0
+        },
+        "bias_sensp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_sensn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_inp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_inn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "test_source": {
+            "test_freq": 1,
+            "test_amp": 1
+        }
+    },
+
+    "ads1299_3": {
+        "config1": {
+            "daisy_en": 0,
+            "clk_en": 1,
+            "data_rate": 6
+        },
+        "config2": {
+            "pdb_refbuf": 1,
+            "vref_4v": 0,
+            "bias_meas": 0,
+            "biasref_int": 1,
+            "biasbuff_en": 1,
+            "lds_off_comp": 1,
+            "test_signal": 0
+        },
+        "config3": {
+            "pdb_lead_off": 1,
+            "pdb_bias": 1,
+            "bias_loff_sens": 0,
+            "bias_stat": 0,
+            "pdb_refbuf": 1
+        },
+        "loff": {
+            "loffp": 15,
+            "loffn": 15,
+            "flicker_loff": 1,
+            "comp_thresh": 0,
+            "ilead_off": 2,
+            "flead_off": 1
+        },
+        "channels": [
+            {
+                "ads_channel": 1,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 1,
+                "readable_name": "CH1",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 2,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 11,
+                "readable_name": "CH11",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 3,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 2,
+                "readable_name": "CH2",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 4,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 12,
+                "readable_name": "CH12",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 5,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 3,
+                "readable_name": "CH3",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 6,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 13,
+                "readable_name": "CH13",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 7,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 4,
+                "readable_name": "CH4",
+                "HPF": 0.5,
+                "LPF": 100
+            },
+            {
+                "ads_channel": 8,
+                "pga_gain": 6,
+                "mux": 0,
+                "srb2": 1,
+                "power_down": 0,
+                "amp_input": 14,
+                "readable_name": "CH14",
+                "HPF": 0.5,
+                "LPF": 100
+            }
+        ],
+        "loff_sensp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "loff_sensn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "gpio": {
+            "gpio_c1": 0,
+            "gpio_c2": 0,
+            "gpio_c3": 0,
+            "gpio_c4": 0
+        },
+        "misc1": {
+            "srb1": 0
+        },
+        "misc2": {
+            "crs_bypass": 0
+        },
+        "bias_sensp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_sensn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_inp": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "bias_inn": {
+            "ch1": 0,
+            "ch2": 0,
+            "ch3": 0,
+            "ch4": 0,
+            "ch5": 0,
+            "ch6": 0,
+            "ch7": 0,
+            "ch8": 0
+        },
+        "test_source": {
+            "test_freq": 1,
+            "test_amp": 1
+        }
+    }
+
+}   

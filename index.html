@@ -1,0 +1,475 @@
+
+<!-- Tutorial made by Rene-F for AppSeed.us | 2022 | https://github.com/Rene-F -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>EASYBCI - Bio Amp App</title>
+
+  <link rel="canonical" href="https://blog.appseed.us/bootstrap-for-beginners-with-examples/" />
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Bootstrap CSS End -->
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Main CSS End -->
+    <!-- Bootstrap Icons Start -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Bootstrap Icons End -->
+    <link rel="stylesheet" href="css/dark-mode.css">
+
+</head>
+<body>
+
+<!-- Vertically centered modal -->
+<div class="modal fade in show" id="bioampConnectionModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Connect to Bio Amp 1</h5>
+      </div>
+      <div class="modal-body text-center">
+        <p>Connect the Bio Amp 1 device to the USB port and press the button below to connect.</p>
+        <button id="connectButton" class="btn btn-primary">Connect</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- full screen modal to configure device -->
+<div class="modal fade" id="bioampConfigModal" tabindex="-1" aria-labelledby="bioampConfigModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bioampConfigModalLabel">Configure Bio Amp 1</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  Device Configuration
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="config1_data_rate" class="form-label">Data Rate</label>
+                      <select class="form-select" id="config1_data_rate">
+                        <option value="0">250 SPS</option>
+                        <option value="1">500 SPS</option>
+                        <option value="2">1000 SPS</option>
+                        <option value="3">2000 SPS</option>
+                        <option value="4">4000 SPS</option>
+                        <option value="5">8000 SPS</option>
+                        <option value="6">16000 SPS</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  Device Configuration
+                </div>
+                <div class="card-body">
+                  <form id="ads1299-config-form">
+                    <!-- The fields will be dynamically populated here -->
+                  </form>
+                  <button type="button" onclick="submitConfig()">Submit Configuration</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>    
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <!-- Sidebar Trigger Start -->
+    <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><span class="navbar-toggler-icon"></span></button>
+    <!-- Sidebar Trigger End -->
+    <a class="navbar-brand fw-bold me-auto" href="#">EASYBCI</a>
+    
+  </div>
+</nav>             
+<!-- Navbar End -->
+
+<!-- Sidebar Start -->
+<div class="offcanvas offcanvas-start bg-dark text-white side-bar" data-bs-scroll="true" tabindex="-1" id="offcanvas" aria-labelledby="offcanvas">
+  <div class="offcanvas-body p-0">
+    <nav class="navbar-dark">
+      <ul class="navbar-nav">
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3">Bio Amp 1 </div>
+        </li>
+        <li>
+          <a class="nav-link px-3 active">
+            <span class="me-2">
+              <i class="bi bi-wrench-adjustable-circle"></i>
+            </span>
+            <span class="fw-bold">Status: </span><span class="text-danger" id="device-connection-status">Not Connected</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link px-3">
+            <span class="me-2">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bioampConfigModal">
+                Configure Bio Amp 1</button>  
+            </span>
+          </a>
+        <li class="my-4">
+          <hr class="dropdown-divider">
+        </li>
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3">Controls</div>
+        </li>
+        <li>
+          <button> Start Recording</button>
+          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <span class="me-2"><i class="bi bi-layout-text-window-reverse"></i></span>
+            <span class="fw-bold">Layouts</span>
+            <span class="right-icon ms-auto">
+              <i class="bi bi-chevron-down"></i>
+            </span>
+          </a>
+          <div class="collapse" id="collapseExample">
+            <div>
+              <ul class="navbar-nav ps-3">
+                <li>
+                  <a href="#" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-layout-text-window-reverse"></i></span>
+            <span class="fw-bold">Nested Link</span>
+                  </a>                  
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2">
+              <i class="bi bi-archive"></i>
+            </span>
+            <span class="fw-bold">Archive</span>
+          </a>
+        </li>
+        <li class="my-4">
+          <hr class="dropdown-divider">
+        </li>
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3">Addons</div>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2">
+              <i class="bi bi-activity"></i>
+            </span>
+            <span class="fw-bold">Activity</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2">
+              <i class="bi bi-clipboard2-data"></i>
+            </span>
+            <span class="fw-bold">Data</span>
+          </a>
+        </li>
+        <li class="my-4">
+          <hr class="dropdown-divider">
+        </li>
+        <div class="custom-control custom-switch px-3">
+          <label class="custom-control-label" for="darkSwitch">
+          <span class="fw-bold">
+            <i class="bi bi-moon me-2"></i>
+            Dark Mode</span>
+          </label>
+          <input type="checkbox" class="custom-control-input checkbox ms-auto" id="darkSwitch">
+        </div>
+        <li class="my-4">
+          <hr class="dropdown-divider">
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2">
+              <i class="bi bi-info-circle"></i>
+            </span>
+            Provided by 
+            <span class="fw-bold">AppSeed</span>
+          </a>
+        </li>
+      </li>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- Sidebar End -->
+
+<!-- Main Content Start -->
+<main class="mt-5 pt-3">
+  <div class="container-fluid">
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <div class="card-chart">
+          <div class="card-header">Filtered Data</div>
+          <div class="card-body">
+            <canvas class="chart col-md-12" id="eeg-plot"  height="100"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="row mt-2">
+      <div class="col-md-6">
+        <div class="card-table">
+          <div class="card-header">
+            Spectrum
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <canvas class="chart col-md-12" id="fft-chart" ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-table">
+          <div class="card-header">
+            Connection Status
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <canvas class="chart col-md-12" id="fft-chart" ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+  </div>
+</main>
+<!-- Main Content End -->
+
+<!-- Scripts Start -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
+<!-- <script src="js/bioamp1.js"></script> -->
+<!-- Scripts End -->
+<script>
+// Function to reconnect to the serial port
+async function reconnectSerialPort() {
+  try {
+    const port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 9600 });
+    console.log('Reconnected to the serial port');
+  } catch (error) {
+    console.error('Failed to reconnect to the serial port:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const connectButton = document.getElementById('connectButton');
+    
+
+    var connectionModal = new bootstrap.Modal(document.getElementById('bioampConnectionModal'));
+    var connectionStatusText = document.getElementById('device-connection-status');
+    // connectionModal.show();
+
+    var bioampConfigModal = new bootstrap.Modal(document.getElementById('bioampConfigModal'));
+    bioampConfigModal.show();
+    
+
+    connectButton.addEventListener('click', async () => {
+      if ('serial' in navigator) {
+              try {
+                  port = await navigator.serial.requestPort();
+                  await port.open({ baudRate: 921600 });
+                  console.log('Serial port opened:', port);
+                  connectionModal.hide();
+                  connectionStatusText.innerHTML = 'Connected';
+                  connectionStatusText.classList.remove('text-danger');
+                  connectionStatusText.classList.add('text-success');
+
+              } catch (err) {
+                  console.error('There was an error opening the serial port:', err);
+              }
+          } else {
+              console.log('Web Serial API not supported.');
+          }
+      })
+});
+
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const ads1299Configs = [
+          { id: 'ads1299_1', name: 'ADS1299_1' },
+          { id: 'ads1299_2', name: 'ADS1299_2' },
+          { id: 'ads1299_3', name: 'ADS1299_3' }
+      ];
+
+      const gains = [1, 2, 4, 6, 8, 12, 24];
+      const modes = ["Normal", "Shorted", "BIAS Measure", "MVDD", "Temperature", "Test Signal"];
+
+      const formContainer = document.getElementById('ads1299-config-form');
+
+      ads1299Configs.forEach(config => {
+          const fieldset = document.createElement('fieldset');
+          const legend = document.createElement('legend');
+          legend.textContent = `${config.name} Configuration`;
+          fieldset.appendChild(legend);
+
+          // Data Rate Input
+          const dataRateDiv = document.createElement('div');
+          const dataRateLabel = document.createElement('label');
+          dataRateLabel.setAttribute('for', `${config.id}_data_rate`);
+          dataRateLabel.textContent = "Data Rate:";
+          const dataRateInput = document.createElement('input');
+          dataRateInput.setAttribute('type', 'number');
+          dataRateInput.setAttribute('id', `${config.id}_data_rate`);
+          dataRateInput.setAttribute('name', `${config.id}_data_rate`);
+          dataRateInput.setAttribute('min', '0');
+          dataRateInput.setAttribute('max', '6');
+          dataRateInput.value = '6';
+          dataRateDiv.appendChild(dataRateLabel);
+          dataRateDiv.appendChild(dataRateInput);
+          fieldset.appendChild(dataRateDiv);
+
+          // Channels Configuration
+          const channelsDiv = document.createElement('div');
+          const channelsHeader = document.createElement('h3');
+          channelsHeader.textContent = "Channels";
+          channelsDiv.appendChild(channelsHeader);
+
+          for (let i = 1; i <= 8; i++) {
+              const channelDiv = document.createElement('div');
+
+              // Channel Name
+              const channelNameLabel = document.createElement('label');
+              channelNameLabel.setAttribute('for', `${config.id}_ch${i}_name`);
+              channelNameLabel.textContent = `Channel ${i} Name:`;
+              const channelNameInput = document.createElement('input');
+              channelNameInput.setAttribute('type', 'text');
+              channelNameInput.setAttribute('id', `${config.id}_ch${i}_name`);
+              channelNameInput.setAttribute('name', `${config.id}_ch${i}_name`);
+              channelNameInput.value = `Channel ${i}`;
+              channelDiv.appendChild(channelNameLabel);
+              channelDiv.appendChild(channelNameInput);
+
+              // PGA Gain
+              const gainLabel = document.createElement('label');
+              gainLabel.setAttribute('for', `${config.id}_ch${i}_gain`);
+              gainLabel.textContent = "PGA Gain:";
+              const gainSelect = document.createElement('select');
+              gainSelect.setAttribute('id', `${config.id}_ch${i}_gain`);
+              gainSelect.setAttribute('name', `${config.id}_ch${i}_gain`);
+              gains.forEach(gain => {
+                  const option = document.createElement('option');
+                  option.setAttribute('value', gain);
+                  option.textContent = gain;
+                  gainSelect.appendChild(option);
+              });
+              channelDiv.appendChild(gainLabel);
+              channelDiv.appendChild(gainSelect);
+
+              // Mode
+              const modeLabel = document.createElement('label');
+              modeLabel.setAttribute('for', `${config.id}_ch${i}_mode`);
+              modeLabel.textContent = "Mode:";
+              const modeSelect = document.createElement('select');
+              modeSelect.setAttribute('id', `${config.id}_ch${i}_mode`);
+              modeSelect.setAttribute('name', `${config.id}_ch${i}_mode`);
+              modes.forEach(mode => {
+                  const option = document.createElement('option');
+                  option.setAttribute('value', mode);
+                  option.textContent = mode;
+                  modeSelect.appendChild(option);
+              });
+              channelDiv.appendChild(modeLabel);
+              channelDiv.appendChild(modeSelect);
+
+              // Bias Feedback
+              const biasLabel = document.createElement('label');
+              biasLabel.setAttribute('for', `${config.id}_ch${i}_bias`);
+              biasLabel.textContent = "Bias Feedback:";
+              const biasCheckbox = document.createElement('input');
+              biasCheckbox.setAttribute('type', 'checkbox');
+              biasCheckbox.setAttribute('id', `${config.id}_ch${i}_bias`);
+              biasCheckbox.setAttribute('name', `${config.id}_ch${i}_bias`);
+              channelDiv.appendChild(biasLabel);
+              channelDiv.appendChild(biasCheckbox);
+
+              channelsDiv.appendChild(channelDiv);
+          }
+
+          fieldset.appendChild(channelsDiv);
+          formContainer.appendChild(fieldset);
+      });
+  });
+
+  function submitConfig() {
+      const config = {
+          ads1299_1: {
+              config1: {
+                  data_rate: document.getElementById('ads1299_1_data_rate').value
+              },
+              channels: []
+          },
+          ads1299_2: {
+              config1: {
+                  data_rate: document.getElementById('ads1299_2_data_rate').value
+              },
+              channels: []
+          },
+          ads1299_3: {
+              config1: {
+                  data_rate: document.getElementById('ads1299_3_data_rate').value
+              },
+              channels: []
+          }
+      };
+
+      function collectChannelData(prefix, targetArray) {
+          for (let i = 1; i <= 8; i++) {
+              targetArray.push({
+                  ch_name: document.getElementById(`${prefix}_ch${i}_name`).value,
+                  pga_gain: document.getElementById(`${prefix}_ch${i}_gain`).value,
+                  mode: document.getElementById(`${prefix}_ch${i}_mode`).value,
+                  bias_feedback: document.getElementById(`${prefix}_ch${i}_bias`).checked ? 1 : 0
+              });
+          }
+      }
+
+      collectChannelData('ads1299_1', config.ads1299_1.channels);
+      collectChannelData('ads1299_2', config.ads1299_2.channels);
+      collectChannelData('ads1299_3', config.ads1299_3.channels);
+
+      console.log(JSON.stringify(config, null, 2));
+      alert("Configuration submitted! Check the console for the JSON output.");
+  }
+</script>
+
+</body>
+</html>
